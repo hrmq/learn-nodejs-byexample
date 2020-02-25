@@ -23,7 +23,7 @@ io.sockets.on('connection', socket => {
   socket.on('messageChange', data => {
     console.log(data);
     socket.emit(
-      'recieve',
+      'receive',
       data.message
         .split('')
         .reverse()
