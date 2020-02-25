@@ -9,7 +9,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
-    done(null, use);
+    done(null, user);
   });
 });
 
@@ -31,7 +31,8 @@ passport.use(
           // if not, create user in our db
           new User({
             username: profile.displayName,
-            googleId: profile.id
+            googleId: profile.id,
+            thumbnail: profile._json.picture
           })
             .save()
             .then(newUser => {
